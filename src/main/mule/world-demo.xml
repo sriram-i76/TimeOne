@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="db154dd4-0e80-41d8-8111-f7093dd1adbe">
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="fd63170f-0de1-465f-aa64-c8d33f3b342b">
+		<http:request-connection protocol="HTTPS" host="www.timeapi.io"/>
+	</http:request-config>
+	<flow name="world-demoFlow" doc:id="8046bf29-730b-4293-b6ca-40405e8b47c8" >
+		<http:listener doc:name="Listener" doc:id="bb63f74e-cba9-48f1-8090-f9697ae7e4ae" config-ref="HTTP_Listener_config" path="/gettime"/>
+		<http:request method="GET" doc:name="Request" doc:id="c9320eaf-307e-41c5-8ad7-f0c9d2ee41df" config-ref="HTTP_Request_configuration" path="/api/time/current/zone">
+			<http:query-params ><![CDATA[#[output application/java
+---
+{
+	timezone : attributes.queryParams.timezone
+}]]]></http:query-params>
+		</http:request>
+	</flow>
+</mule>
