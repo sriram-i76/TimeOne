@@ -82,8 +82,6 @@
     <profile>
       <id>cloudhub-deploy</id>
       <properties>
-        <anypoint.username>sriram-23</anypoint.username>
-        <anypoint.password>#Sriram@123</anypoint.password>
         <anypoint.environment>Sandbox</anypoint.environment>
         <application.name>worldtimezone-service</application.name>
       </properties>
@@ -95,11 +93,10 @@
             <version>${mule.maven.plugin.version}</version>
             <configuration>
               <cloudHubDeployment>
-                <username>sriram-23</username>
-                <password>#Sriram@123</password>
+                <serverId>anypoint-platform</serverId>
                 <environment>Sandbox</environment>
                 <workers>1</workers>
-                <workerType>Micro</workerType>
+                <workerType>MICRO</workerType>
                 <applicationName>worldtimezone-service</applicationName>
                 <muleVersion>4.9.6</muleVersion>
               </cloudHubDeployment>
