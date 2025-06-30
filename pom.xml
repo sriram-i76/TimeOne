@@ -92,7 +92,7 @@
           <plugin>
             <groupId>org.mule.tools.maven</groupId>
             <artifactId>mule-maven-plugin</artifactId>
-            <version>${mule.mavenplugin.version}</version>
+            <version>${mule.maven.plugin.version}</version>
             <configuration>
               <cloudHubDeployment>
                 <username>sriram-23</username>
